@@ -32,6 +32,13 @@ class Parachuter:
         else:
             print("\nIncorrect!")
             self._guesses_left -= 1
+    #This is not working yet, so if you need to use it, you will need to fix it or comment it out
+    def compare_guesses(self):
+        self.correct= []
+        for i in self._guesses:
+            right_word = self.correct.append(i)
+            return self.correct
+    print(f"trololololololo {compare_guesses()}")
     def display_word(self):
         print("The word is: ", self._puzzle._word)
     def display_guesses(self):
@@ -40,6 +47,7 @@ class Parachuter:
         print("Guesses left: ", self._guesses_left)
     def play_game(self):
         while self._guesses_left > 0:
+            self.compare_guesses()
             self.guess_word()
             self.check_guess()
             self.display_guesses()
@@ -52,7 +60,8 @@ class Parachuter:
                 print("\nYou won!")
                 print(self.display_word())
 #TODO: Add a check to see if the player got the word right
-                if self._guesses in self._puzzle._word:
+#This part is not working either
+                if self.compare_guesses() in self._puzzle._word:
                     print("You got it!")
                     print(self.display_word())
                     break
