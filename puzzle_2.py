@@ -1,8 +1,5 @@
 import random
 
-#TODO: Add a check to see if the player got the word right
-#TODO: Replace some of the wording in the code so it says what our instructor is asking us
-
 class Words:
     def __init__(self):
         self.data = ["be", "have", "do", "say","get","make", "go", "know", "take","see"]
@@ -27,7 +24,7 @@ class Parachuter:
         self._guess = input("\nEnter a letter: ")
         self._guesses.append(self._guess)
     def check_guess(self):
-        
+
         if self._guess in self._puzzle._word:
             print("\nCorrect!")
         else:
@@ -40,25 +37,25 @@ class Parachuter:
         print("Your guesses: ", self._guesses)
     def display_guesses_left(self):
         print("Guesses left: ", self._guesses_left)
-    
+
     def play_game(self):
         list_new = self._guesses
-        
+
         while self._guesses_left > 0:
             self.guess_word()
             self.check_guess()
             self.display_guesses()
             self.display_guesses_left()
+            self.display_word()
             if self._guesses_left == 0:
                 print("\nYou lost!")
                 print(self.display_word())
                 break
-            
-            if self._puzzle._word in list_new:
-                print("\nYou won!")
-                print(self.display_word())
-#TODO: Add a check to see if the player got the word right
 
+            new_trans = ''.join(map(str, self._guesses))
+            if new_trans == self._puzzle._word:
+                print("You won!! Congrats!!")
+                print(self.display_word())
                 break
 
 def main_2 ():

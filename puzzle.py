@@ -49,14 +49,9 @@ class Player:
                 print("\nYou lost!")
                 print(self.display_word())
                 break
-            if self._guess == self._puzzle._word:
-                print("\nYou won!")
-                print(self.display_word())
-#TODO: Add a check to see if the player got the word right
-                if self._guesses in self._puzzle._word:
-                    print("You got it!")
-                    print(self.display_word())
-                    break
+            new_trans = ''.join(map(str, self._guesses))
+            if new_trans == self._puzzle._word:
+                print("You won!! Congrats!!")
                 break
 
 def main():
