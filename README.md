@@ -12,7 +12,5 @@
 * If the puzzle is solved the game is over.
 
 * If the player has no more parachute the game is over.
-* 
-. -------------------------------------------------------------------------.
-. Note: This program will only work using the latest Python Version (3.10)..
-. -------------------------------------------------------------------------.
+
+Note: This program will only work using the latest Python Version (3.10)
