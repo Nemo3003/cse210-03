@@ -38,9 +38,6 @@ class Parachuter:
     def display_guesses_left(self):
         print("Guesses left: ", self._guesses_left)
        
-            
-
-
     def play_game(self):
         list_new = self._guesses
 
@@ -72,7 +69,6 @@ class Parachuter:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses:
                             print("Well done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
-
 
 def main_2 ():
     obj1 = Parachuter()
