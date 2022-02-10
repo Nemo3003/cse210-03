@@ -1,4 +1,5 @@
 import random
+from re import match
 
 class Words:
     def __init__(self):
@@ -18,25 +19,27 @@ class Parachuter:
         self._guesses = []
         self._guesses_left = 10
         self._guesses_allowed = 10
+        
     def guess_word(self):
-        print("The number of letters are: ", len(self._puzzle._word))
+        length_word =  len(self._puzzle._word)
+        print("The number of letters are: ", length_word)
         print("The first letter is: ", self._puzzle._word[0])
         self._guess = input("\nEnter a letter: ")
         self._guesses.append(self._guess)
     def check_guess(self):
-
         if self._guess in self._puzzle._word:
             print("\nCorrect!")
         else:
             print("\nIncorrect!")
             poping = self._guesses.pop()
             self._guesses_left -= 1
-    def display_word(self):
-        print("The word is: ", self._puzzle._word)
     def display_guesses(self):
         print("Your guesses: ", self._guesses)
     def display_guesses_left(self):
         print("Guesses left: ", self._guesses_left)
+       
+            
+
 
     def play_game(self):
         list_new = self._guesses
@@ -46,17 +49,30 @@ class Parachuter:
             self.check_guess()
             self.display_guesses()
             self.display_guesses_left()
-            self.display_word()
             if self._guesses_left == 0:
                 print("\nYou lost!")
-                print(self.display_word())
                 break
-
+            
             new_trans = ''.join(map(str, self._guesses))
             if new_trans == self._puzzle._word:
                 print("You won!! Congrats!!")
-                print(self.display_word())
                 break
+            else:
+                length_word =  len(self._puzzle._word)
+                match length_word:
+                    case 2:
+                        if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses:
+                            print("Well done! you finally made it!!")
+                            print("The word was",  self._puzzle._word)
+                    case 3:
+                        if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses:
+                            print("Well done! you finally made it!!")
+                            print("The word was",  self._puzzle._word)
+                    case 4:
+                        if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses:
+                            print("Well done! you finally made it!!")
+                            print("The word was",  self._puzzle._word)
+
 
 def main_2 ():
     obj1 = Parachuter()
