@@ -19,6 +19,9 @@ Jumper is a game in which the player seeks to solve a puzzle by guessing the let
 ## Required Technologies
 Note: This program will only work using the latest Python Version (3.10)
 
+## Game Start
+Game should be started from puzzle.py
+
 ## Authors
 ---
 * Ulises Mariano Melgarejo
