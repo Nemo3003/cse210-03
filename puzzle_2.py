@@ -50,7 +50,7 @@ class Parachuter:
             if self._guesses_left == 0:
                 print("\nYou lost!")
                 restart = input("Do want to play Again?(y/n): ")
-                if restart.lower() != "y":
+                if restart.lower() == "y":
                     main_2()
                 else:
                     sys.exit

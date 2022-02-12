@@ -61,7 +61,7 @@ class Player:
             if new_trans == self._puzzle._word:
                 print("You won!! Congrats!!")
                 restart = input("Do want to play Again?(y/n): ")
-                if restart.lower() != "y":
+                if restart.lower() == "y":
                     main()
                 else:
                     sys.exit
