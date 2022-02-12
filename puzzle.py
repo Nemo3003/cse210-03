@@ -1,5 +1,6 @@
 import random
 from puzzle_2 import main_2
+import sys
 #TODO: Add a check to see if the player got the word right
 
 class Word:
@@ -51,11 +52,19 @@ class Player:
             if self._guesses_left == 0:
                 print("\nYou lost!")
                 print(self.display_word())
-                break
+                restart = input("Do want to play Again?(y/n): ")
+                if restart.lower() == "y":
+                    main()
+                else:
+                    sys.exit
             new_trans = ''.join(map(str, self._guesses))
             if new_trans == self._puzzle._word:
                 print("You won!! Congrats!!")
-                break
+                restart = input("Do want to play Again?(y/n): ")
+                if restart.lower() != "y":
+                    main()
+                else:
+                    sys.exit
             else:
                 length_word =  len(self._puzzle._word)
                 match length_word:
