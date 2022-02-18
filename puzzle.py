@@ -1,19 +1,7 @@
 import random
 from puzzle_2 import main_2
 import sys
-#TODO: Add a check to see if the player got the word right
-
-class Word:
-    def __init__(self):
-        fileObject = open("list_words.txt", "r")
-        data = fileObject.read()
-        self.longest_string = max(data, key=len)
-        self._word = random.choice(data.split())
-class Puzzle(Word):
-    def __init__(self):
-
-        # Calling constructor of the word class
-        Word.__init__(self)
+from match import Puzzle
 
 class Player:
 
@@ -21,6 +9,7 @@ class Player:
         self._puzzle = Puzzle()
         self._guess = ""
         self._guesses = []
+        self._incorrect_guess = []
         self._guesses_left = 20
         self._guesses_allowed = 20
     def guess_word(self):
@@ -30,18 +19,24 @@ class Player:
         self._guesses.append(self._guess)
     def check_guess(self):
         if self._guess in self._puzzle._word:
+            self.warning()
             print("Correct!")
         else:
             print("Incorrect!")
+            self.warning()
+            self._incorrect_guess.append(self._guess)
             poping = self._guesses.pop()
             self._guesses_left -= 1
+    def display_incorrect(self):
+        print("Letters you guesses that were wrong! ", self._incorrect_guess)
     def display_word(self):
         print("The word is: ", self._puzzle._word)
     def display_guesses(self):
         print("Lines in your parachute: ", self._guesses)
     def display_guesses_left(self):
         print("Lines in your parachute left: ", self._guesses_left)
-
+    def warning(self):
+        print("DO NOT UNDER ANY CIRCUMSTANCES USE THE SAME LETTER MORE THAN ONCE")
     def play_game(self):
 
         while self._guesses_left > 0:
@@ -49,6 +44,8 @@ class Player:
             self.check_guess()
             self.display_guesses()
             self.display_guesses_left()
+            self.display_incorrect()
+            
             if self._guesses_left == 0:
                 print("\nYou lost!")
                 print(self.display_word())
@@ -66,68 +63,85 @@ class Player:
                 else:
                     sys.exit
             else:
+                #Let's check if the player has guessed the word. This will only be used if the player does not guess the word
+                #in its correct order
                 length_word =  len(self._puzzle._word)
                 match length_word:
                     case 2:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 3:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 4:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 5:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 6:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 7:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 8:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 9:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses and self._puzzle._word[8] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 10:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses and self._puzzle._word[8] in self._guesses and self._puzzle._word[9] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 11:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses and self._puzzle._word[8] in self._guesses and self._puzzle._word[9] in self._guesses and self._puzzle._word[10] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 12:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses and self._puzzle._word[8] in self._guesses and self._puzzle._word[9] in self._guesses and self._puzzle._word[10] in self._guesses and self._puzzle._word[11] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 13:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses and self._puzzle._word[8] in self._guesses and self._puzzle._word[9] in self._guesses and self._puzzle._word[10] in self._guesses and self._puzzle._word[11] in self._guesses and self._puzzle._word[12] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 14:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses and self._puzzle._word[8] in self._guesses and self._puzzle._word[9] in self._guesses and self._puzzle._word[10] in self._guesses and self._puzzle._word[11] in self._guesses and self._puzzle._word[12] in self._guesses and self._puzzle._word[13] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 15:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses and self._puzzle._word[8] in self._guesses and self._puzzle._word[9] in self._guesses and self._puzzle._word[10] in self._guesses and self._puzzle._word[11] in self._guesses and self._puzzle._word[12] in self._guesses and self._puzzle._word[13] in self._guesses and self._puzzle._word[14] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
                     case 16:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses and self._puzzle._word[4] in self._guesses and self._puzzle._word[5] in self._guesses and self._puzzle._word[6] in self._guesses and self._puzzle._word[7] in self._guesses and self._puzzle._word[8] in self._guesses and self._puzzle._word[9] in self._guesses and self._puzzle._word[10] in self._guesses and self._puzzle._word[11] in self._guesses and self._puzzle._word[12] in self._guesses and self._puzzle._word[13] in self._guesses and self._puzzle._word[14] in self._guesses and self._puzzle._word[15] in self._guesses:
-                            print("Well done! you finally made it!!")
+                            print("\nWell done! you finally made it!!")
                             print("The word was",  self._puzzle._word)
+                            break
 
 
 def main():
@@ -141,7 +155,7 @@ print("Just remember, room 1 has thousands of words, room 2 has only ten words."
 choice = input("\nEnter 1 or 2: ")
 
 if choice == "1":
-    print("You are in room 1")
+    print("\nYou are in room 1")
     print("You have three thousand words to guess.")
     print("You have 20 lines in your parachute.")
     print("You can only guess one letter at a time.")
@@ -149,7 +163,7 @@ if choice == "1":
     main()
 
 elif choice == "2":
-    print("You are in room 2")
+    print("\nYou are in room 2")
     print("You have ten words to guess.")
     print("You have 10 lines in your parachute.")
     print("You can only guess one letter at a time.")
