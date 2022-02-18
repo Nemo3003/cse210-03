@@ -48,6 +48,7 @@ class Parachuter:
             
             if self._guesses_left == 0:
                 print("\nYou lost!")
+                print("I'm so sorry, but you lost the game. Be thankful that this is just a game, otherwise you could have lost your life :( ")
                 restart = input("Do want to play Again?(y/n): ")
                 if restart.lower() == "y":
                     main_2()
@@ -57,6 +58,7 @@ class Parachuter:
             new_trans = ''.join(map(str, self._guesses))
             if new_trans == self._puzzle._word:
                 print("You won!! Congrats!!")
+                print("To celebrate your victory I would invite you a beer but my creator does not drink beer, I am a computer program and I guess you don't drink beer either. So I will just say, well done!")
                 restart = input("Do want to play Again?(y/n): ")
                 if restart.lower() == "y":
                     main_2()
@@ -68,16 +70,19 @@ class Parachuter:
                     case 2:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses:
                             print("\nWell done! you finally made it!!")
+                            print("To celebrate your victory I would invite you a beer but my creator does not drink beer, I am a computer program and I guess you don't drink beer either. So I will just say, well done!")
                             print("The word was",  self._puzzle._word)
                             break
                     case 3:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses:
                             print("\nWell done! you finally made it!!")
+                            print("To celebrate your victory I would invite you a beer but my creator does not drink beer, I am a computer program and I guess you don't drink beer either. So I will just say, well done!")
                             print("The word was",  self._puzzle._word)
                             break
                     case 4:
                         if self._puzzle._word[0] in self._guesses and self._puzzle._word[1] in self._guesses and self._puzzle._word[2] in self._guesses and self._puzzle._word[3] in self._guesses:
                             print("\nWell done! you finally made it!!")
+                            print("To celebrate your victory I would invite you a beer but my creator does not drink beer, I am a computer program and I guess you don't drink beer either. So I will just say, well done!")
                             print("The word was",  self._puzzle._word)
                             break
 
